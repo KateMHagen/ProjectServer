@@ -36,6 +36,11 @@ public partial class WorldCitiesSourceContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("name");
             entity.Property(e => e.Population).HasColumnName("population");
+
+            entity.HasOne(d => d.Country).WithMany(p => p.Cities)
+                .HasForeignKey(d => d.CountryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_City_Country");
         });
 
         modelBuilder.Entity<Country>(entity =>
