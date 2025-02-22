@@ -1,4 +1,4 @@
-namespace StinkyProjectServer
+namespace ProjectServer
 {
     public class WeatherForecast
     {

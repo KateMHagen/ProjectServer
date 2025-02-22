@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace StinkyProjectServer.Controllers
+namespace ProjectServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]

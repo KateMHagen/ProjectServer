@@ -1,6 +1,6 @@
-@StinkyProjectServer_HostAddress = http://localhost:5118
+@ProjectServer_HostAddress = http://localhost:5118
 
-GET {{StinkyProjectServer_HostAddress}}/weatherforecast/
+GET {{ProjectServer_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
