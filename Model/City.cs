@@ -16,6 +16,10 @@ namespace Model
         [Unicode(false)]
         public string Name { get; set; } = null!;
 
+        public decimal Lat { get; set; }
+
+        public decimal Lon { get; set; }
+
         [Column("population")]
         public int Population { get; set; }
 

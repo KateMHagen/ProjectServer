@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Model;
 
@@ -10,9 +11,11 @@ using Model;
 namespace Model.Migrations
 {
     [DbContext(typeof(WorldCitiesSourceContext))]
-    partial class WorldCitiesSourceContextModelSnapshot : ModelSnapshot
+    [Migration("20250308003500_latlon")]
+    partial class latlon
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
