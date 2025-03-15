@@ -15,5 +15,7 @@ namespace ProjectServer.Dtos
 
         public int Population { get; set; }
 
+        public int CityCount { get; set; }
+
     }
 }
