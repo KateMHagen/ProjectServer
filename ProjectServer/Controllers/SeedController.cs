@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Model;
@@ -15,9 +16,26 @@ namespace ProjectServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SeedController(WorldCitiesSourceContext context, IHostEnvironment environment) : ControllerBase
+    public class SeedController(WorldCitiesSourceContext context, IHostEnvironment environment, 
+        UserManager<WorldCitiesUser> userManager) : ControllerBase
     {
         string _pathName = Path.Combine(environment.ContentRootPath, "Data/worldcities.csv");
+
+        [HttpPost("Users")]
+        public async Task ImportUsersAsync()
+        {
+            WorldCitiesUser user = new()
+            {
+                UserName = "user",
+                Email = "user@email.com",
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+
+            IdentityResult x = await userManager.CreateAsync(user, "Password123!");
+
+            int y = await context.SaveChangesAsync();
+        }
+
 
         [HttpPost("Countries")]
         public async Task<ActionResult> ImportCountriesAsync()
@@ -100,5 +118,7 @@ namespace ProjectServer.Controllers
             return new JsonResult(cityCount);
 
         }
+
+
     }
 }
